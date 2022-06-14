@@ -137,6 +137,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ```
 
+Much on [WhiteNoise](http://whitenoise.evans.io/en/stable/#:~:text=Radically%20simplified%20static%20file%20serving,or%20any%20other%20external%20service.)
+
 # Requirements.txt
 
 If your under a virtual environment run the command below to generate the requirements.txt file which heroku will use to install python package dependencies.
