@@ -263,7 +263,60 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Deployment
 
+1. Create an application in heroku
+    ```sh
+    heroku create <application name>
 
+    ```
+*Application name of your choice*
+
+2. Create heroku postgres add on to your Heroku application
+
+```sh
+heroku addons:create heroku-postgresql:hobby-dev
+```
+3. Add configuration variables to heroku.
+    ways to configure;
+    - Login to Heroku dashboard.
+    - on Dashboard go to to settings.
+    - Reveal configurations vars and add the variables  or alternatively,
+
+Run this command to push `.env` file directly to heroku
+
+```sh
+heroku config:set $(cat .env | sed '/^$/d; /#[[:print:]]*$/d')
+```
+
+4. After setting the variables we can now push to heroku.
+
+    ```sh
+    git add .
+    ```
+
+    ```sh
+    git commit -m "ft:deployment - deployment to heroku"
+    ```
+
+    ```sh
+    git push heroku master
+    ```
+
+### Run Migrations
+
+```
+$ heroku run python manage.py migrate
+```
+
+push your postgres database data to heroku as a whole. 
+
+```sh
+heroku pg:push <The name of the db in the local psql> DATABASE_URL --app <heroku-app>
+```
+
+#Resources
+
+
+    
 
 
 
