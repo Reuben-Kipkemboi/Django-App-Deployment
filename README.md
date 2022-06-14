@@ -85,6 +85,91 @@ on your ` runtime.txt `
 python-3.8.10
 ```
 
+# Configure Django Heroku
+
+Django Heroku is a Django library for Heroku applications that ensures a seamless deployment and development experience.
+
+This library provides;
+
+* Settings configuration (Static files / WhiteNoise).
+* Logging configuration.
+* Test runner
+
+To install
+```
+pip install django-heroku   
+```
+*remember to add it to your requirements.txt file by `pip freeeze > requirements.txt`*
+
+# Whitenoise configuration
+
+With a couple of lines of config WhiteNoise allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service.
+
+* Installation
+
+```
+pip install whitenoise
+```
+
+* In your `settings.py` file add whitenoise to the `middleware` list
+above all other middleware apart from Django’s SecurityMiddleware:
+
+```
+MIDDLEWARE = [
+    # ...
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # ...
+]
+```
+Want forever-cacheable files and compression support? Just add this to your `settings.py`(We basically want to give a gzip functionality):
+
+```
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+```
+
+*configuring your location for media* 
+
+```
+# configuring the location for media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+```
+
+# Requirements.txt
+
+If your under a virtual environment run the command below to generate the requirements.txt file which heroku will use to install python package dependencies.
+
+`pip freeze > requirements.txt` this adds all the dependancies are in thr requirements.txt
+
+A sample requirements.txt file
+
+```
+asgiref==3.5.2
+backports.zoneinfo==0.2.1
+beautifulsoup4==4.11.1
+bootstrap4==0.1.0
+certifi==2022.5.18.1
+cloudinary==1.29.0
+dj-database-url==0.5.0
+Django==4.0.5
+django-bootstrap4==22.1
+django-heroku==0.3.1
+djangorestframework==3.13.1
+gunicorn==20.1.0
+psycopg2==2.9.3
+python-decouple==3.6
+pytz==2022.1
+six==1.16.0
+soupsieve==2.3.2.post1
+sqlparse==0.4.2
+urllib3==1.26.9
+whitenoise==6.2.0
+```
+
+
+
 
 
 
