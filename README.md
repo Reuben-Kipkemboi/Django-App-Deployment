@@ -313,7 +313,7 @@ push your postgres database data to heroku as a whole.
 heroku pg:push <The name of the db in the local psql> DATABASE_URL --app <heroku-app>
 ```
 
-# Resources
+# Useful Resources
 * [Django Heroku](https://pypi.org/project/django-heroku/)
 * [WhiteNoise 6.2.0 documentation](http://whitenoise.evans.io/en/stable/#:~:text=Radically%20simplified%20static%20file%20serving,or%20any%20other%20external%20service.)
 * [Python Decouple](https://pypi.org/project/python-decouple/)
